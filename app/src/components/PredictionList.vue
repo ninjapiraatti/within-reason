@@ -1,8 +1,7 @@
 <template>
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-    {{ predictions }}
     <div
-      v-for="prediction in predictions"
+      v-for="prediction in predictions.data"
       :key="prediction.id"
       class="bg-white rounded-lg shadow-md p-4"
     >
@@ -11,7 +10,7 @@
       <div class="mt-4 flex justify-between items-center">
         <div>
           <span class="text-sm text-gray-500">By:</span>
-          <span class="text-sm font-medium">{{ prediction }}</span>
+          <span class="text-sm font-medium">{{ prediction.attributes }}</span>
         </div>
         <div class="flex space-x-4">
           <button
@@ -57,6 +56,7 @@ const renouncePrediction = (prediction) => {
 
 onMounted(async () => {
   predictionsStore.fetchPredictions()
+  console.log(predictions.value)
 })
 
 </script>

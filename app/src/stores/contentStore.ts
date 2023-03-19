@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { fetchSettings } from '../api/apiClient';
+import { fetchSettingsAPI } from '../api/apiClient';
 
 export const useContentStore = defineStore('content', {
   state: () => ({
@@ -12,7 +12,7 @@ export const useContentStore = defineStore('content', {
   actions: {
     async fetchSettingsData() {
       try {
-        const settings = await fetchSettings();
+        const settings = await fetchSettingsAPI();
         this.logoUrl = this.imagesBaseUrl + settings.logo.data.attributes.url
       } catch (error) {
         this.error = (error as Error).message

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { fetchPredictions } from '../api/apiClient'
+import { fetchPredictionsAPI, createPredictionAPI } from '@/api/apiClient'
 
 export const usePredictionsStore = defineStore('predictions', {
   state: () => ({
@@ -10,11 +10,20 @@ export const usePredictionsStore = defineStore('predictions', {
   actions: {
     async fetchPredictions() {
       try {
-        this.predictions = await fetchPredictions()
+        this.predictions = await fetchPredictionsAPI()
       } catch (error) {
         this.error = (error as Error).message
       } finally {
         this.loading = false
+      }
+    },
+    async createPrediction(prediction: Prediction): Promise<void> {
+      try {
+        const createdPrediction = await createPredictionAPI(prediction)
+        this.predictions.push(createdPrediction)
+      } catch (error) {
+        console.error(error)
+        throw new Error('Failed to create prediction')
       }
     }
   },

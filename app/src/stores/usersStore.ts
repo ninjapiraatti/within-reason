@@ -1,25 +1,54 @@
 import { defineStore } from 'pinia'
+import { refreshToken } from '@/api/apiClient'
+
+interface User {
+  id: number;
+  username: string;
+  email: string;
+  // other user properties if needed
+}
 
 export const useUsersStore = defineStore('users', {
   state: () => ({
-    currentUser: null,
+    user: null,
     tokens: 0,
-    jwt: null,
+    jwt: '',
   }),
   getters: {
-    isLoggedIn: (state) => !!state.currentUser,
+    isLoggedIn: (state) => !!state.user,
   },
   actions: {
-    setUser(user) {
-      this.user = user
-    },
-    setJwt(jwt) {
-      this.jwt = jwt
-      localStorage.setItem('jwt', jwt)
-    },
     logout() {
       this.user = null
-      this.jwt = null
+      this.jwt = ''
+    },
+    setUser(user: User | null) {
+      this.user = user
+    },
+    setJwt(jwt: string) {
+      this.jwt = jwt
+    },
+    async initializeAuth() {
+      const jwt = localStorage.getItem('jwt')
+      const storedUser = localStorage.getItem('user')
+  
+      if (jwt && storedUser) {
+        this.setJwt(jwt)
+        this.setUser(JSON.parse(storedUser))
+      } else {
+        try {
+          const response = await refreshToken()
+          const { jwt, user } = response.data
+  
+          localStorage.setItem('jwt', jwt)
+          localStorage.setItem('user', JSON.stringify(user))
+  
+          this.setJwt(jwt)
+          this.setUser(user)
+        } catch (error) {
+          console.error((error as Error).message)
+        }
+      }
     },
   },
 })

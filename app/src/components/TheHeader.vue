@@ -22,6 +22,7 @@
     <div class="container mx-auto px-4" v-if="menuOpen">
       <div class="md:hidden flex flex-col space-y-2 mt-4">
         <!-- Add your menu items here -->
+        <router-link to="/profile" class="text-white hover:text-gray-300">{{ user.username }}</router-link>
         <router-link to="/predictions" class="text-white hover:text-gray-300">Predictions</router-link>
       </div>
     </div>
@@ -31,12 +32,15 @@
 <script setup lang="ts">
 import { computed, ref, onMounted } from 'vue'
 import { useContentStore } from '@/stores/contentStore'
+import { useUsersStore } from '@/stores/usersStore'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 
 const contentStore = useContentStore()
+const usersStore = useUsersStore()
 const loading = computed(() => contentStore.loading)
 const logoUrl = computed(() => contentStore.logoUrl)
 const error = computed(() => contentStore.error)
+const user = computed(() => usersStore.user)
 
 const menuOpen = ref(false)
 

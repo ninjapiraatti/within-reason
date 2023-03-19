@@ -32,17 +32,11 @@
     "Criteria": {
       "type": "richtext"
     },
-    "Author": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "predictions"
-    },
     "Referees": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "predictions"
+      "inversedBy": "RefereeIn"
     },
     "UsersFor": {
       "type": "relation",
@@ -55,6 +49,12 @@
       "relation": "oneToMany",
       "target": "plugin::users-permissions.user",
       "mappedBy": "Against"
+    },
+    "AuthorName": {
+      "type": "string"
+    },
+    "AuthorID": {
+      "type": "string"
     }
   }
 }
