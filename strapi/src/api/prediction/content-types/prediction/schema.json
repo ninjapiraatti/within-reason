@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "predictions",
+  "info": {
+    "singularName": "prediction",
+    "pluralName": "predictions",
+    "displayName": "Prediction",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "richtext"
+    },
+    "Deadline": {
+      "type": "datetime"
+    },
+    "Status": {
+      "type": "enumeration",
+      "enum": [
+        "open",
+        "happened",
+        "did_not_happen"
+      ]
+    },
+    "Criteria": {
+      "type": "richtext"
+    },
+    "Author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "predictions"
+    },
+    "Referees": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "predictions"
+    },
+    "UsersFor": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "For"
+    },
+    "UsersAgainst": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "Against"
+    }
+  }
+}
