@@ -17,13 +17,13 @@
             class="text-blue-600"
             @click="loggedIn ? supportPrediction(prediction) : showModal = true"
           >
-            <thumb-up-icon class="h-6 w-6" />
+            <hand-thumb-up-icon class="h-6 w-6" />
           </button>
           <button
             class="text-red-600"
             @click="loggedIn ? renouncePrediction(prediction) : showModal = true"
           >
-            <thumb-down-icon class="h-6 w-6" />
+            <hand-thumb-down-icon class="h-6 w-6" />
           </button>
         </div>
       </div>
@@ -38,20 +38,24 @@
 
 <script setup lang="ts">
 import { onMounted, computed, ref } from 'vue'
-import { usePredictionsStore } from '../stores/predictionsStore'
+import { usePredictionsStore } from '@/stores/predictionsStore'
+import { useUsersStore } from '@/stores/usersStore'
+import { HandThumbDownIcon, HandThumbUpIcon } from '@heroicons/vue/24/outline'
 
 const predictionsStore = usePredictionsStore()
+const usersStore = useUsersStore()
 const predictions = computed(() => predictionsStore.predictions)
 const loading = computed(() => predictionsStore.loading)
 const error = computed(() => predictionsStore.error)
+const loggedIn = computed(() => !!usersStore.user)
 const showModal = ref(false)
 
 const supportPrediction = (prediction) => {
-    // Add logic to support a prediction
+  console.log("Supported")
 }
 
 const renouncePrediction = (prediction) => {
-    // Add logic to renounce a prediction
+  console.log("Not supported")
 }
 
 onMounted(async () => {

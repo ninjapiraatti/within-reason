@@ -34,7 +34,7 @@ export async function fetchPredictionsAPI() {
 
 export async function createPredictionAPI(prediction: Prediction): Promise<Prediction> {
   try {
-    const response = await apiClient.post('/predictions', { data: {...prediction} }, config)
+    const response = await apiClient.post('/predictions', { data: prediction }, config)
     return response.data
   } catch (error) {
     console.error(error)
