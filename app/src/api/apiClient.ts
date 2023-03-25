@@ -1,4 +1,5 @@
 // src/api/apiClient.ts
+import type { Prediction, LoginCredentials, User, RegisterUser } from '@/types';
 import axios from 'axios';
 
 const jwt = localStorage.getItem('jwt');
@@ -86,7 +87,9 @@ export async function registerAPI(user: RegisterUser): Promise<User> {
   }
 }
 
-export async function refreshToken(): Promise<{ jwt: string; user: User }> {
+export async function refreshToken(): Promise<{
+  jwt: string; user: User 
+}> {
   try {
     const jwt = localStorage.getItem('jwt');
 

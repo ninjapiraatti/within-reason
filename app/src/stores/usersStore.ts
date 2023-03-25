@@ -1,16 +1,10 @@
 import { defineStore } from 'pinia'
 import { refreshToken } from '@/api/apiClient'
-
-interface User {
-  id: number;
-  username: string;
-  email: string;
-  // other user properties if needed
-}
+import type { User } from '@/types'
 
 export const useUsersStore = defineStore('users', {
   state: () => ({
-    user: null,
+    user: null as User | null,
     tokens: 0,
     jwt: '',
   }),
@@ -18,11 +12,13 @@ export const useUsersStore = defineStore('users', {
     isLoggedIn: (state) => !!state.user,
   },
   actions: {
-    logout() {
+    logOut() {
       this.user = null
       this.jwt = ''
+      localStorage.setItem('jwt', "")
+      localStorage.setItem('user', "")
     },
-    setUser(user: User | null) {
+    setUser(user: User) {
       this.user = user
     },
     setJwt(jwt: string) {
@@ -38,7 +34,7 @@ export const useUsersStore = defineStore('users', {
       } else {
         try {
           const response = await refreshToken()
-          const { jwt, user } = response.data
+          const { jwt, user } = response
   
           localStorage.setItem('jwt', jwt)
           localStorage.setItem('user', JSON.stringify(user))

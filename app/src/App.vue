@@ -16,15 +16,4 @@ const usersStore = useUsersStore()
 onMounted(() => {
   usersStore.initializeAuth()
 })
-
-router.beforeEach((to, from, next) => {
-  const isAuthenticated = !!usersStore.jwt
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
-
-  if (requiresAuth && !isAuthenticated) {
-    next({ name: 'Login' })
-  } else {
-    next()
-  }
-})
 </script>

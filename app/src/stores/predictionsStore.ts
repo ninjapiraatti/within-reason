@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia'
 import { fetchPredictionsAPI, createPredictionAPI } from '@/api/apiClient'
+import type { Prediction } from '@/types'
 
 export const usePredictionsStore = defineStore('predictions', {
   state: () => ({
-    predictions: [],
+    predictions: [] as Prediction[],
     loading: true,
     error: ''
   }),
