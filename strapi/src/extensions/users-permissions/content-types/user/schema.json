@@ -63,26 +63,14 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "Schmoney": {
+    "schmoney": {
       "type": "biginteger"
     },
-    "For": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::prediction.prediction",
-      "inversedBy": "UsersFor"
-    },
-    "Against": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::prediction.prediction",
-      "inversedBy": "UsersAgainst"
-    },
-    "RefereeIn": {
+    "refereeIn": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::prediction.prediction",
-      "mappedBy": "Referees"
+      "mappedBy": "referees"
     }
   }
 }

@@ -1,3 +1,10 @@
+export enum Status {
+  Open = 'open',
+  ResolvedTrue = 'resolved true',
+  ResolvedFalse = 'resolved false',
+  Cancelled = 'cancelled',
+}
+
 export interface User {
   id: string,
   username: string,
@@ -16,10 +23,22 @@ export interface LoginCredentials {
 }
 
 export interface Prediction {
-  Title: string
-  Description: string
-  AuthorName: string
-  AuthorID: string
-  Deadline: Date
-  Criteria: string
+  title: string
+  description: string
+  deadline: Date
+  criteria: string
+  authorName: string
+  authorID: string
+  statusPrediction: Status
+  referees: User[]
+  bets: Bet[]
+}
+
+export interface Bet {
+  userID: string
+  back: boolean
+  amount: number
+  odds: number
+  statusBet: Status
+  predictionID: string
 }

@@ -1,5 +1,5 @@
 // src/api/apiClient.ts
-import type { Prediction, LoginCredentials, User, RegisterUser } from '@/types';
+import type { Prediction, LoginCredentials, User, RegisterUser, Bet } from '@/types';
 import axios from 'axios';
 
 const jwt = localStorage.getItem('jwt');
@@ -16,17 +16,25 @@ const config = {
 
 export async function fetchSettingsAPI() {
   try {
-    //const response = await apiClient.get('/site-settings/1');
     const response = await apiClient.get(`/site-settings/1?populate=*`)
-    return response.data.data.attributes;
+    return response.data.data.attributes
   } catch (error) {
-    throw error;
+    throw error
   }
 }
 
 export async function fetchPredictionsAPI() {
   try {
     const response = await apiClient.get('/predictions?populate=*')
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export async function fetchBetsAPI() {
+  try {
+    const response = await apiClient.get('/bets?populate=*')
     return response.data
   } catch (error) {
     throw error
@@ -43,23 +51,20 @@ export async function createPredictionAPI(prediction: Prediction): Promise<Predi
   }
 }
 
-/*
-async createPrediction(newPrediction: NewPrediction) {
+export async function createBetAPI(bet: Bet): Promise<Bet> {
   try {
-    const user = await getUser(); // get the current user
-    const response = await apiClient.post('/predictions', {
-      ...newPrediction,
-      author: user.id, // set the author field to the current user's ID
-    });
-    const prediction = response.data as Prediction;
-    this.addPrediction(prediction);
-    return prediction;
+    const response = await apiClient.post('/bets', { 
+      data: {
+        ...bet,
+        prediction: bet.predictionID
+      }
+    }, config)
+    return response.data
   } catch (error) {
-    console.error((error as Error).message);
-    throw error;
+    console.error(error)
+    throw new Error('Failed to create bet')
   }
-},
-*/
+}
 
 // Login function
 export async function loginAPI(credentials: LoginCredentials): Promise<User> {

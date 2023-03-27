@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bets",
+  "info": {
+    "singularName": "bet",
+    "pluralName": "bets",
+    "displayName": "Bet",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "userID": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "biginteger"
+    },
+    "odds": {
+      "type": "float"
+    },
+    "back": {
+      "type": "boolean"
+    },
+    "statusBet": {
+      "type": "enumeration",
+      "enum": [
+        "open",
+        "resolved true",
+        "resolved false",
+        "cancelled"
+      ]
+    },
+    "prediction": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::prediction.prediction",
+      "inversedBy": "bets"
+    }
+  }
+}

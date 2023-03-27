@@ -43,9 +43,11 @@ import { computed, ref, onMounted, onUnmounted } from 'vue'
 import { useContentStore } from '@/stores/contentStore'
 import { useUsersStore } from '@/stores/usersStore'
 import { Bars3Icon, XMarkIcon, UserIcon } from '@heroicons/vue/24/outline'
+import { useRouter } from 'vue-router'
 
 const contentStore = useContentStore()
 const usersStore = useUsersStore()
+const router = useRouter()
 const loading = computed(() => contentStore.loading)
 const logoUrl = computed(() => contentStore.logoUrl)
 const error = computed(() => contentStore.error)
@@ -57,6 +59,7 @@ const dropdownOpen = ref(false)
 const logOut = () => {
   usersStore.logOut()
   closeMenus()
+  router.push('/login')
 }
 
 const toggleDropdown = () => {

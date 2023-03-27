@@ -29,7 +29,7 @@
 import { ref, computed } from 'vue';
 import { usePredictionsStore } from '@/stores/predictionsStore';
 import { useUsersStore } from '@/stores/usersStore';
-import type { Prediction } from '@/types';
+import { Status, type Prediction } from '@/types';
 
 const title = ref('');
 const description = ref('');
@@ -41,21 +41,36 @@ const usersStore = useUsersStore();
 const author = computed(() => usersStore.user)
 
 const handleSubmit = async () => {
-  const newPrediction: Prediction = {
-      Title: title.value,
-      Description: description.value,
-      Deadline: new Date(deadline.value),
-      AuthorName: author.value?.username,
-      AuthorID: `${author.value?.id}`,
-      Criteria: 'lol'
+  if (author.value) {
+    const newPrediction: Prediction = {
+      title: title.value,
+      description: description.value,
+      deadline: new Date(deadline.value),
+      criteria: 'lol',
+      authorName: author.value.username,
+      authorID: `${author.value.id}`,
+      statusPrediction: Status.Open,
+      referees: [],
+      bets: []
     }
-  try {
-    await predictionsStore.createPrediction(newPrediction)
-    title.value = ''
-    description.value = ''
-    deadline.value = ''
-  } catch (error) {
-    console.error((error as Error).message)
+    try {
+      await predictionsStore.createPrediction(newPrediction)
+      title.value = ''
+      description.value = ''
+      deadline.value = ''
+    } catch (error) {
+      console.error((error as Error).message)
+    }
   }
 }
 </script>
+
+title: string
+description: string
+deadline: Date
+criteria: string
+authorName: string
+authorID: string
+statusPrediction: Status
+referees: User[]
+bets: Bet[]

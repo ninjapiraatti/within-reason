@@ -39,19 +39,20 @@
 import { ref } from 'vue'
 import { loginAPI } from '@/api/apiClient'
 import { useUsersStore } from '@/stores/usersStore'
+import { useRouter } from 'vue-router';
 
 const identifier = ref('')
 const password = ref('')
 const usersStore = useUsersStore()
+const router = useRouter()
 
 const doLogin = async () => {
   try {
     const response = await loginAPI({ identifier: identifier.value, password: password.value })
-    // Handle successful login
     usersStore.setUser(response.user)
     usersStore.setJwt(response.jwt)
+    router.push('/')
   } catch (error) {
-    // Handle login error
     console.error((error as Error).message)
   }
 }

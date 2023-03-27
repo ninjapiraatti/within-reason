@@ -12,49 +12,44 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
-    "Description": {
+    "description": {
       "type": "richtext"
     },
-    "Deadline": {
+    "deadline": {
       "type": "datetime"
     },
-    "Status": {
+    "criteria": {
+      "type": "richtext"
+    },
+    "authorName": {
+      "type": "string"
+    },
+    "authorID": {
+      "type": "string"
+    },
+    "statusPrediction": {
       "type": "enumeration",
       "enum": [
         "open",
-        "happened",
-        "did_not_happen"
+        "resolved true",
+        "resolved false",
+        "cancelled"
       ]
     },
-    "Criteria": {
-      "type": "richtext"
-    },
-    "Referees": {
+    "referees": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "RefereeIn"
+      "inversedBy": "refereeIn"
     },
-    "UsersFor": {
+    "bets": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "plugin::users-permissions.user",
-      "mappedBy": "For"
-    },
-    "UsersAgainst": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "plugin::users-permissions.user",
-      "mappedBy": "Against"
-    },
-    "AuthorName": {
-      "type": "string"
-    },
-    "AuthorID": {
-      "type": "string"
+      "target": "api::bet.bet",
+      "mappedBy": "prediction"
     }
   }
 }
