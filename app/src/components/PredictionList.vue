@@ -5,14 +5,14 @@
       :key="prediction.id"
       class="bg-white rounded-lg shadow-md p-4"
     >
-      <h3 class="text-lg font-semibold mb-2">{{ prediction.title }}</h3>
-      <p class="text-gray-600">{{ prediction.description }}</p>
+      <h3 class="text-lg font-semibold mb-2">{{ prediction.attributes.title }}</h3>
+      <p class="text-gray-600">{{ prediction.attributes.description }}</p>
       <div class="mt-4 flex justify-between items-center">
         <div>
           <span class="text-sm text-gray-500">By:</span>
-          <span class="text-sm font-medium">{{ prediction.attributes }}</span>
+          <span class="text-sm font-medium">{{ prediction.attributes.authorName }}</span>
         </div>
-        <div class="flex space-x-4">
+        <div v-if="loggedIn" class="flex space-x-4">
           <button
             class="text-blue-600"
             @click="loggedIn ? createBet(prediction, true) : showModal = true"
@@ -26,12 +26,15 @@
             <hand-thumb-down-icon class="h-6 w-6" />
           </button>
         </div>
+        <div v-else class="flex space-x-4">
+          Register to start predicting!
+        </div>
       </div>
     </div>
   </div>
 
   <div v-if="showModal" class="fixed z-10 inset-0 overflow-y-auto">
-    <!-- Add your modal content here -->
+    lol
   </div>
 </template>
 
