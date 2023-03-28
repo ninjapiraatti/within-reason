@@ -7,7 +7,7 @@
         </router-link>
       </div>
       <div class="hidden md:flex items-center space-x-4">
-        <router-link to="/predictions" class="text-white hover:text-gray-300">Predictions</router-link>
+        <router-link to="/about" class="text-white hover:text-gray-300">About</router-link>
         <div class="relative">
           <button @click.stop="toggleDropdown" class="focus:outline-none">
             <UserIcon class="h-6 w-6" />
@@ -31,7 +31,7 @@
     <div class="container mx-auto px-4" v-if="menuOpen">
       <div class="md:hidden flex flex-col space-y-2 mt-4">
         <router-link to="/profile" class="text-white hover:text-gray-300">{{ user.username }}</router-link>
-        <router-link to="/predictions" class="text-white hover:text-gray-300">Predictions</router-link>
+        <router-link to="/about" class="text-white hover:text-gray-300">About</router-link>
         <a @click="logOut" class="text-white hover:text-gray-300">Log out</a>
       </div>
     </div>
