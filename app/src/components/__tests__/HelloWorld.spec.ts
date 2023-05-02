@@ -1,11 +1,13 @@
 import { describe, it, expect } from "vitest";
 
 import { mount } from "@vue/test-utils";
-import HomeView from "../HomeView.vue";
+import PredictionList from "@/components/PredictionList.vue";
 
 describe("HomeView", () => {
   it("renders properly", () => {
-    const wrapper = mount(HomeView, { props: { msg: "Hello Vitest" } });
-    expect(wrapper.text()).toContain("Hello Vitest");
+    const wrapper = mount(PredictionList, {
+      props: { title: "Hello Within Reason" },
+    });
+    expect(wrapper.text()).toContain("Hello Within Reason");
   });
 });

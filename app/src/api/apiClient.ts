@@ -1,108 +1,113 @@
 // src/api/apiClient.ts
-import type { Prediction, LoginCredentials, User, RegisterUser, Bet } from '@/types';
-import axios from 'axios';
+import type {
+  Prediction,
+  LoginCredentials,
+  User,
+  RegisterUser,
+  Bet,
+} from "@/types";
+import axios from "axios";
 
-const jwt = localStorage.getItem('jwt');
+const jwt = localStorage.getItem("jwt");
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:1337/api',
-})
+  baseURL: "http://localhost:1337/api",
+});
 
 const config = {
   headers: {
-    Authorization: `Bearer ${jwt}`
-  }
+    Authorization: `Bearer ${jwt}`,
+  },
 };
 
 export async function fetchSettingsAPI() {
-  try {
-    const response = await apiClient.get(`/site-settings/1?populate=*`)
-    return response.data.data.attributes
-  } catch (error) {
-    throw error
-  }
+  const response = await apiClient.get(`/site-settings/1?populate=*`);
+  return response.data.data.attributes;
 }
 
 export async function fetchPredictionsAPI() {
-  try {
-    const response = await apiClient.get('/predictions?populate=*')
-    return response.data
-  } catch (error) {
-    throw error
-  }
+  const response = await apiClient.get("/predictions?populate=*");
+  return response.data;
 }
 
 export async function fetchBetsAPI() {
-  try {
-    const response = await apiClient.get('/bets?populate=*')
-    return response.data
-  } catch (error) {
-    throw error
-  }
+  const response = await apiClient.get("/bets?populate=*");
+  return response.data;
 }
 
-export async function createPredictionAPI(prediction: Prediction): Promise<Prediction> {
+export async function createPredictionAPI(
+  prediction: Prediction
+): Promise<Prediction> {
   try {
-    const response = await apiClient.post('/predictions', { data: prediction }, config)
-    return response.data
+    const response = await apiClient.post(
+      "/predictions",
+      { data: prediction },
+      config
+    );
+    return response.data;
   } catch (error) {
-    console.error(error)
-    throw new Error('Failed to create prediction')
+    console.error(error);
+    throw new Error("Failed to create prediction");
   }
 }
 
 export async function createBetAPI(bet: Bet): Promise<Bet> {
   try {
-    const response = await apiClient.post('/bets', { 
-      data: {
-        ...bet,
-        prediction: bet.predictionID
-      }
-    }, config)
-    return response.data
+    const response = await apiClient.post(
+      "/bets",
+      {
+        data: {
+          ...bet,
+          prediction: bet.predictionID,
+        },
+      },
+      config
+    );
+    return response.data;
   } catch (error) {
-    console.error(error)
-    throw new Error('Failed to create bet')
+    console.error(error);
+    throw new Error("Failed to create bet");
   }
 }
 
 // Login function
-export async function loginAPI(credentials: LoginCredentials): Promise<User> {
-  try {
-    const response = await apiClient.post(`/auth/local`, credentials)
-    const userData = response.data
-    localStorage.setItem('jwt', userData.jwt)
-    localStorage.setItem('user', JSON.stringify(userData.user))
-    return userData
-  } catch (error) {
-    throw error
-  }
+export async function loginAPI(credentials: LoginCredentials): Promise<{
+  jwt: string;
+  user: User;
+}> {
+  const response = await apiClient.post(`/auth/local`, credentials);
+  const userData = response.data;
+  localStorage.setItem("jwt", userData.jwt);
+  localStorage.setItem("user", JSON.stringify(userData.user));
+  return { jwt: userData.jwt, user: userData.user };
 }
 
 // Register function
-export async function registerAPI(user: RegisterUser): Promise<User> {
-  try {
-    const response = await apiClient.post(`/auth/local/register`, user)
-    const userData = response.data
-    localStorage.setItem('jwt', userData.jwt)
-    localStorage.setItem('user', JSON.stringify(userData.user))
-    return userData
-  } catch (error) {
-    throw error
-  }
+export async function registerAPI(user: RegisterUser): Promise<{
+  jwt: string;
+  user: User;
+}> {
+  const response = await apiClient.post(`/auth/local/register`, user);
+  const userData = response.data;
+  localStorage.setItem("jwt", userData.jwt);
+  localStorage.setItem("user", JSON.stringify(userData.user));
+  return { jwt: userData.jwt, user: userData.user };
 }
 
 export async function refreshToken(): Promise<{
-  jwt: string; user: User 
+  jwt: string;
+  user: User;
 }> {
   try {
-    const jwt = localStorage.getItem('jwt');
+    const jwt = localStorage.getItem("jwt");
 
     if (!jwt) {
-      throw new Error('No JWT token found');
+      throw new Error("No JWT token found");
     }
 
-    const response = await apiClient.post('/auth/refresh-token', {},
+    const response = await apiClient.post(
+      "/auth/refresh-token",
+      {},
       {
         headers: {
           Authorization: `Bearer ${jwt}`,
@@ -112,13 +117,11 @@ export async function refreshToken(): Promise<{
 
     const newJwt = response.data.jwt;
     const user = response.data.user;
-    localStorage.setItem('jwt', newJwt);
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem("jwt", newJwt);
+    localStorage.setItem("user", JSON.stringify(user));
 
     return { jwt: newJwt, user };
   } catch (error) {
-    throw new Error('Failed to refresh the JWT token');
+    throw new Error("Failed to refresh the JWT token");
   }
 }
-
-

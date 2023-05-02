@@ -9,9 +9,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useUsersStore } from '@/stores/usersStore'
+import { computed } from "vue";
+import { useUsersStore } from "@/stores/usersStore";
 
 const usersStore = useUsersStore();
-const user = computed(() => usersStore.user)
+const user = computed(() => usersStore.user);
 </script>

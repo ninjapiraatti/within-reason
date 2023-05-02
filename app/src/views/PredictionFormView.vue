@@ -5,5 +5,5 @@
 </template>
 
 <script setup lang="ts">
-import PredictionForm from "@/components/PredictionForm.vue"
+import PredictionForm from "@/components/PredictionForm.vue";
 </script>

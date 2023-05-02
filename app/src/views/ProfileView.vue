@@ -1,9 +1,7 @@
 <template>
   <main>
-    <h1>Profile</h1>
+    <h1>Profille</h1>
   </main>
 </template>
 
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
