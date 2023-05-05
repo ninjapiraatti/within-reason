@@ -1,9 +1,9 @@
 <template>
-  <main>
-    <PredictionList />
-  </main>
+	<main>
+		<PredictionList />
+	</main>
 </template>
 
 <script setup lang="ts">
-import PredictionList from "@/components/PredictionList.vue";
+import PredictionList from "@/components/PredictionList.vue"
 </script>

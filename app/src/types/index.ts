@@ -1,44 +1,44 @@
 export enum Status {
-  Open = "open",
-  ResolvedTrue = "resolved true",
-  ResolvedFalse = "resolved false",
-  Cancelled = "cancelled",
+	Open = "open",
+	ResolvedTrue = "resolved true",
+	ResolvedFalse = "resolved false",
+	Cancelled = "cancelled",
 }
 
 export interface User {
-  id: string;
-  username: string;
-  email: string;
+	id: string
+	username: string
+	email: string
 }
 
 export interface RegisterUser {
-  email: string;
-  username: string;
-  password: string;
+	email: string
+	username: string
+	password: string
 }
 
 export interface LoginCredentials {
-  identifier: string;
-  password: string;
+	identifier: string
+	password: string
 }
 
 export interface Prediction {
-  title: string;
-  description: string;
-  deadline: Date;
-  criteria: string;
-  authorName: string;
-  authorID: string;
-  statusPrediction: Status;
-  referees: User[];
-  bets: Bet[];
+	title: string
+	description: string
+	deadline: Date
+	criteria: string
+	authorName: string
+	authorID: string
+	statusPrediction: Status
+	referees: User[]
+	bets: Bet[]
 }
 
 export interface Bet {
-  userID: string;
-  back: boolean;
-  amount: number;
-  odds: number;
-  statusBet: Status;
-  predictionID: string;
+	userID: string
+	back: boolean
+	amount: number
+	odds: number
+	statusBet: Status
+	predictionID: string
 }
