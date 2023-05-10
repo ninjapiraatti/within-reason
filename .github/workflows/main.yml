@@ -75,5 +75,5 @@ jobs:
         host: ${{ secrets.SERVER_HOST }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        source: "app/" # change to your Vue dist folder
-        target: "/var/www/within-reason/app"
+        source: "app/dist/" # change to your Vue dist folder
+        target: "/var/www/within-reason"

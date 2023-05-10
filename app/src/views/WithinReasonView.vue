@@ -1,8 +1,6 @@
 <template>
 	<main>
-		<router-link to="/within-reason" class="text-xl font-semibold">
-			Within Reason?
-		</router-link>
+		<PredictionList />
 	</main>
 </template>
 
