@@ -1,6 +1,6 @@
 module.exports = {
     apps : [{
       name   : "within-reason",
-      script : "npm run strapi start"
+      script : "sudo npm run strapi start"
     }]
   }
