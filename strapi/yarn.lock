@@ -1853,26 +1853,6 @@
     "react-intl" "6.2.8"
     "yup" "^0.32.9"
 
-"@strapi/plugin-i18n@4.8.2":
-  "integrity" "sha512-XK8gf7Q7byN/7vyefaylKdaXEbOkMB8QOC4qHTx4BiLzRZl4IKHfMDdaVT7iQlPYe4jh0wJ0QLscvMEOCxlPpQ=="
-  "resolved" "https://registry.npmjs.org/@strapi/plugin-i18n/-/plugin-i18n-4.8.2.tgz"
-  "version" "4.8.2"
-  dependencies:
-    "@strapi/design-system" "1.6.5"
-    "@strapi/helper-plugin" "4.8.2"
-    "@strapi/icons" "1.6.5"
-    "@strapi/utils" "4.8.2"
-    "formik" "2.2.9"
-    "immer" "9.0.19"
-    "lodash" "4.17.21"
-    "prop-types" "^15.7.2"
-    "qs" "6.11.0"
-    "react-intl" "6.2.8"
-    "react-query" "3.24.3"
-    "react-redux" "8.0.5"
-    "redux" "^4.2.1"
-    "yup" "^0.32.9"
-
 "@strapi/plugin-upload@4.8.2":
   "integrity" "sha512-/U38saYP/gpF0A9lloMCqZ5iOpalKesGPIF7TdqbGu+D32vL8B/lo0lJGBw+IzPqqQN9/lwbfVmsVv1t0W3H4A=="
   "resolved" "https://registry.npmjs.org/@strapi/plugin-upload/-/plugin-upload-4.8.2.tgz"

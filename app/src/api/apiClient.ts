@@ -11,7 +11,8 @@ import axios from "axios"
 const jwt = localStorage.getItem("jwt")
 
 const apiClient = axios.create({
-	baseURL: "http://localhost:1337/api",
+	baseURL: "https://api.tuomaslouekari.fi/api",
+	//baseURL: "https://localhost:1337/api",
 })
 
 const config = {
