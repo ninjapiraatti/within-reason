@@ -1,6 +1,10 @@
 <template>
 	<section class="gap-8 columns-4 p-12">
-		<project-item v-for="project in projects" :key="project.name" :project="project" />
+		<project-item
+			v-for="project in projects"
+			:key="project.name"
+			:project="project"
+		/>
 	</section>
 </template>
 
@@ -10,11 +14,12 @@ import type { Project } from "@/types"
 import tankkiMov from "@/assets/tankki.mp4"
 import ProjectItem from "@/components/ProjectItem.vue"
 
-const base64Image = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" // Replace with your base64 image data
+const base64Image =
+	"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" // Replace with your base64 image data
 
-const projects = ref<Project[]>([]);
+const projects = ref<Project[]>([])
 
-const projectCount = 15; // Specify the desired number of projects
+const projectCount = 15 // Specify the desired number of projects
 
 for (let i = 1; i <= projectCount; i++) {
 	const project: Project = {
