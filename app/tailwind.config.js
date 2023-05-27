@@ -5,7 +5,24 @@ module.exports = {
 		content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
 	},
 	theme: {
-		extend: {},
+		extend: {
+			fontFamily: {
+				overpass: ["Overpass Mono", "monospace"],
+				roboto: ["Roboto", "sans-serif"],
+			},
+			strokeWidth: {
+				10: "10",
+			},
+			colors: {
+				aqua: {
+					100: "#F4FFFD",
+					300: "#CBFFF5",
+					500: "#6BFFE3",
+					700: "#3CF3D2",
+					900: "#24D1B2",
+				},
+			},
+		},
 		screens: {
 			sm: "400px",
 			md: "720px",
