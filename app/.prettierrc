@@ -1,5 +1,9 @@
 {
     "tabWidth": 2,
     "useTabs": true,
-    "semi": false
+    "semi": false,
+    "printWidth": 80,
+    "error": {
+        "endOfLine": "auto"
+    }
 }

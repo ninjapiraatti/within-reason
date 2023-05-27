@@ -42,3 +42,11 @@ export interface Bet {
 	statusBet: Status
 	predictionID: string
 }
+
+export interface Project {
+	name: string
+	image: string
+	video: string
+	description: string
+	link: string
+}
