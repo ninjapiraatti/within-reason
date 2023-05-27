@@ -38,6 +38,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         source: "strapi/" # change to your Strapi folder
         target: "/var/www/within-reason/"
+        debug: true
 
     - name: Install PM2 and start/restart Strapi
       uses: appleboy/ssh-action@master
