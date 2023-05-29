@@ -1,5 +1,5 @@
 <template>
-	<section class="gap-8 columns-4 p-12">
+	<section class="gap-8 columns-1 sm:columns-2 lg:columns-3 xl:columns-4 p-12">
 		<project-item
 			v-for="project in projects"
 			:key="project.name"
@@ -11,6 +11,8 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import type { Project } from "@/types"
+import hulaImg from "@/assets/hula.jpg"
+import furiousPurposeImg from "@/assets/crab.jpg"
 import tankkiMov from "@/assets/tankki.mp4"
 import ProjectItem from "@/components/ProjectItem.vue"
 
@@ -19,29 +21,35 @@ const base64Image =
 
 const projects = ref<Project[]>([])
 
-const projectCount = 15 // Specify the desired number of projects
-
-for (let i = 1; i <= projectCount; i++) {
-	const project: Project = {
-		name: `Project ${i}`,
-		description: `Description ${i}`,
-		image: base64Image,
-		video: "",
-		link: "#",
-	}
-
-	projects.value.push(project)
+const hula: Project = {
+	name: "Hula",
+	description: "Hula",
+	image: hulaImg,
+	video: "",
+	link: "",
+	externalLink: "https://www.hive.fi/en/article/leap-from-a-student-to-fulltime-coder-%E2%80%93-hive-internship-at-codeo/",
 }
 
 const tank: Project = {
-	name: "Tank",
+	name: "MQTT Tank",
 	description: "Tankki lorem ipsum",
 	image: "",
 	video: tankkiMov,
-	link: "#",
+	link: "",
+	externalLink: "https://github.com/ninjapiraatti/arduino_experiments/tree/master/tank",
 }
 
-projects.value.push(tank)
+const furiousPurpose: Project = {
+	name: "Tron clone made with Bevy",
+	description: "Tankki lorem ipsum",
+	image: furiousPurposeImg,
+	video: "",
+	link: "",
+	externalLink: "https://github.com/ninjapiraatti/furious-purpose",
+}
+
+projects.value.push(hula, tank, furiousPurpose)
+
 </script>
 
 <style scoped>

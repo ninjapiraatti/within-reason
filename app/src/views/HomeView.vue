@@ -43,15 +43,14 @@
 				</div>
 			</div>
 		</section>
-		<!-- <section class="bg-xpurple-900">
+		<section class="bg-xpurple-900">
 			<project-list />
-		</section> -->
+		</section>
 	</div>
 </template>
 
 <script setup lang="ts">
 import tuoppiImg from "@/assets/tuoppi.jpg"
-//import tankkiMov from "@/assets/tankki.mp4"
-//import ProjectList from "@/components/ProjectList.vue"
+import ProjectList from "@/components/ProjectList.vue"
 import { GithubIcon, LinkedinIcon, MediumIcon } from "@/components/custom_icons"
 </script>

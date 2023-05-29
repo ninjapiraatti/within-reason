@@ -1,7 +1,6 @@
 <template>
 	<div
 		class="max-w-sm rounded overflow-hidden shadow-lg mb-8 card bg-aqua-300"
-		:style="{ height: getRandomHeight() + 'px' }"
 	>
 		<div class="px-6 py-4">
 			<div class="font-bold text-xl mb-2">{{ props.project.name }}</div>
@@ -23,15 +22,23 @@
 			:alt="props.project.name"
 		/>
 		<div class="px-6 pt-4 pb-6 info">
-			<p class="text-gray-700 text-base">
+			<!-- <p class="text-gray-700 text-base">
 				{{ props.project.description }}
-			</p>
+			</p> -->
 			<router-link
+				v-if="props.project.link.length"
 				:to="props.project.link"
 				class="inline-block bg-purple-500 hover:bg-purple-300 text-white font-bold py-2 px-4 rounded"
 			>
 				View Project
 			</router-link>
+			<a
+				v-else :href="props.project.externalLink"
+				target="_blank"
+				class="inline-block bg-purple-500 hover:bg-purple-300 text-white font-bold py-2 px-4 rounded"
+			>
+				View Project
+			</a>
 		</div>
 	</div>
 </template>

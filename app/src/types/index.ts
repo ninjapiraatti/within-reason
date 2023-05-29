@@ -49,4 +49,5 @@ export interface Project {
 	video: string
 	description: string
 	link: string
+	externalLink: string
 }
