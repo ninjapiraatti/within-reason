@@ -5,8 +5,11 @@
 	</section>
 	<section>
 		<div class="p-8">
-			{{ article.attributes.body }}
+			{{ article.attributes?.body }}
 		</div>
+	</section>
+	<section v-if="article.attributes?.links.length">
+		{{ article.attributes?.links }}
 	</section>
 </template>
 

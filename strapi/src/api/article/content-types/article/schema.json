@@ -42,7 +42,7 @@
         "audios"
       ]
     },
-    "link": {
+    "links": {
       "displayName": "external-link",
       "type": "component",
       "repeatable": true,
