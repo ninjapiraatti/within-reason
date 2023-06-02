@@ -8,9 +8,9 @@
 			{{ article.attributes?.body }}
 		</div>
 	</section>
-	<section v-if="article.attributes?.links.length">
+	<!-- <section v-if="article.attributes?.links.length">
 		{{ article.attributes?.links }}
-	</section>
+	</section> -->
 </template>
 
 <script setup lang="ts">
