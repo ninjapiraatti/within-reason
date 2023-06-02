@@ -11,8 +11,9 @@ import axios from "axios"
 const jwt = localStorage.getItem("jwt")
 
 const apiClient = axios.create({
-	baseURL: "https://api.tuomaslouekari.fi/api",
-	//baseURL: "https://localhost:1337/api",
+  baseURL: import.meta.env.NODE_ENV === 'production' 
+    ? import.meta.env.VITE_BASE_URL_PROD 
+    : import.meta.env.VITE_BASE_URL_LOCAL,
 })
 
 const config = {
@@ -28,12 +29,22 @@ export async function fetchSettingsAPI() {
 
 export async function fetchPredictionsAPI() {
 	const response = await apiClient.get("/predictions?populate=*")
-	return response.data
+	return response.data.data
 }
 
 export async function fetchBetsAPI() {
 	const response = await apiClient.get("/bets?populate=*")
-	return response.data
+	return response.data.data
+}
+
+export async function fetchArticlesAPI() {
+	const response = await apiClient.get("/articles?populate=*")
+	return response.data.data
+}
+
+export async function fetchArticleAPI(id: string) {
+	const response = await apiClient.get(`/articles/${id}?populate=*`)
+	return response.data.data
 }
 
 export async function createPredictionAPI(

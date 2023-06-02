@@ -43,11 +43,18 @@ export interface Bet {
 	predictionID: string
 }
 
-export interface Project {
-	name: string
+export interface ArticleAttributes {
+	title: string
+	ingress: string
 	image: string
 	video: string
-	description: string
-	link: string
-	externalLink: string
+	body: string
+}
+
+export type Article = StrapiResponse<ArticleAttributes>
+
+export interface StrapiResponse<T> {
+  id: number;
+  attributes: T;
+  meta: Record<string, unknown>;
 }

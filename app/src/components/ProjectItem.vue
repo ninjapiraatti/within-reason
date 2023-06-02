@@ -2,60 +2,52 @@
 	<div
 		class="max-w-sm rounded overflow-hidden shadow-lg mb-8 card bg-aqua-300"
 	>
-		<div class="px-6 py-4">
-			<div class="font-bold text-xl mb-2">{{ props.project.name }}</div>
+		<div class="px-3 py-2">
+			<div class="font-bold font-roboto text-xl mb-2">{{ project.attributes.title }}</div>
+			<p class="text-gray-700 text-xs font-overpass">
+				{{ project.attributes.ingress }}
+			</p>
 		</div>
 		<div
-			v-if="props.project.video"
+			v-if="project.attributes.video"
 			class="video-container"
 			@mouseover="playVideo"
 			@mouseout="stopVideo"
 		>
 			<video ref="bgVideo" autoplay muted loop id="myVideo">
-				<source :src="props.project.video" type="video/mp4" />
+				<source :src="project.attributes.video" type="video/mp4" />
 			</video>
 		</div>
 		<img
 			v-else
 			class="w-full"
-			:src="props.project.image"
-			:alt="props.project.name"
+			:src="project.attributes.image"
+			:alt="project.attributes.title"
 		/>
-		<div class="px-6 pt-4 pb-6 info">
-			<!-- <p class="text-gray-700 text-base">
-				{{ props.project.description }}
-			</p> -->
+		<div class="px-3 pb-4 info">
 			<router-link
-				v-if="props.project.link.length"
-				:to="props.project.link"
-				class="inline-block bg-purple-500 hover:bg-purple-300 text-white font-bold py-2 px-4 rounded"
+				:to="`projects/${project.id}`"
+				class="inline-block bg-purple-500 hover:bg-purple-300 text-white font-bold py-2 px-3 rounded font-overpass"
 			>
 				View Project
 			</router-link>
-			<a
-				v-else :href="props.project.externalLink"
-				target="_blank"
-				class="inline-block bg-purple-500 hover:bg-purple-300 text-white font-bold py-2 px-4 rounded"
-			>
-				View Project
-			</a>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
 import { ref, type Ref } from "vue"
-import type { Project } from "@/types"
+import type { Article } from "@/types"
 
 const props = defineProps({
 	project: {
-		type: Object as () => Project,
+		type: Object as () => Article,
 		default: () => ({
-			name: "",
-			description: "",
+			title: "lol",
+			ingress: "lol",
+			body: "lol",
 			image: "",
 			video: "",
-			link: "",
 		}),
 	},
 })
@@ -75,9 +67,6 @@ const stopVideo = () => {
 	}
 }
 
-function getRandomHeight() {
-	return Math.floor(Math.random() * (500 - 100 + 1)) + 100
-}
 </script>
 
 <style scoped>

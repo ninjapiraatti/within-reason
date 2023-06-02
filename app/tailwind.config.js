@@ -11,7 +11,7 @@ module.exports = {
 				roboto: ["Roboto", "sans-serif"],
 			},
 			strokeWidth: {
-				10: "10",
+				16: "16",
 			},
 			colors: {
 				aqua: {
@@ -21,7 +21,7 @@ module.exports = {
 					700: "#3CF3D2",
 					900: "#24D1B2",
 				},
-				xpurple: {
+				purple: {
 					300: "#DD4AB6",
 					500: "#5A1B84",
 					900: "#27053e",

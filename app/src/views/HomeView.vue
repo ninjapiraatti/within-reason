@@ -20,30 +20,30 @@
 						>
 							Tuomas Louekari
 						</h1>
-						<p class="font-overpass text-black mt-4 md:mt-0 md:ml-8 font-thin">
+						<p class="font-overpass text-black mt-4 md:mt-0 md:ml-8">
 							Geriatric millennial building things
 						</p>
 						<div
 							class="flex flex-row md:ml-8 mt-4 justify-center md:justify-start"
 						>
 							<a href="https://github.com/ninjapiraatti" target="_blank">
-								<github-icon class="h-10 w-10 text-black stroke-10 mr-2" />
+								<github-icon class="h-10 w-10 text-black stroke-16 mr-2" />
 							</a>
 							<a href="https://medium.com/@ninjapiraatti" target="_blank">
-								<medium-icon class="h-10 w-10 text-black stroke-10 mr-2" />
+								<medium-icon class="h-10 w-10 text-black stroke-16 mr-2" />
 							</a>
 							<a
 								href="https://www.linkedin.com/in/tuomaslouekari/"
 								target="_blank"
 							>
-								<linkedin-icon class="h-10 w-10 text-black stroke-10 mr-2" />
+								<linkedin-icon class="h-10 w-10 text-black stroke-16 mr-2" />
 							</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<section class="bg-xpurple-900">
+		<section class="bg-purple-900">
 			<project-list />
 		</section>
 	</div>
