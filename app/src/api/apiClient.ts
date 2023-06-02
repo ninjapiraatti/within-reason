@@ -11,7 +11,7 @@ import axios from "axios"
 const jwt = localStorage.getItem("jwt")
 
 const apiClient = axios.create({
-  baseURL: import.meta.env.NODE_ENV === 'production' 
+  baseURL: import.meta.env.VITE_BUILD_ENV === 'production' 
     ? import.meta.env.VITE_BASE_URL_PROD 
     : import.meta.env.VITE_BASE_URL_LOCAL,
 })
