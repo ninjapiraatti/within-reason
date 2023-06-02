@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_snippets_external_links",
+  "info": {
+    "displayName": "external-link"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    }
+  }
+}
