@@ -4,6 +4,6 @@
     "semi": false,
     "printWidth": 80,
     "error": {
-        "endOfLine": "auto"
+        "endOfLine": "lf"
     }
 }

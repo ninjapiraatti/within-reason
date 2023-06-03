@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, computed } from 'vue'
+import { onMounted, computed } from "vue"
 import { useArticlesStore } from "@/stores/articlesStore"
 import { useRoute } from 'vue-router'
 import MarkdownIt from 'markdown-it'
@@ -22,8 +22,8 @@ const md = new MarkdownIt()
 const route = useRoute()
 const articlesStore = useArticlesStore()
 const article = computed(() => articlesStore.currentArticle)
-const textBody = ((markdownText) => {
-  return md.render(markdownText)
+const textBody = ((markdownText: string) => {
+	return md.render(markdownText)
 })
 
 
