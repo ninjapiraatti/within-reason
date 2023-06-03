@@ -54,7 +54,8 @@ export interface ArticleAttributes {
 export type Article = StrapiResponse<ArticleAttributes>
 
 export interface StrapiResponse<T> {
-  id: number;
-  attributes: T;
-  meta: Record<string, unknown>;
+	id: number
+	attributes: T
+	imageUrl: string
+	meta: Record<string, unknown>
 }

@@ -9,7 +9,7 @@
 			</p>
 		</div>
 		<div
-			v-if="project.attributes.video"
+			v-if="project.attributes.video.length"
 			class="video-container"
 			@mouseover="playVideo"
 			@mouseout="stopVideo"
@@ -21,7 +21,7 @@
 		<img
 			v-else
 			class="w-full"
-			:src="project.attributes.image"
+			:src="project.imageUrl"
 			:alt="project.attributes.title"
 		/>
 		<div class="px-3 pb-4 info">

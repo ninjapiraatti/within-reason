@@ -1,10 +1,6 @@
 <template>
 	<section class="gap-8 columns-1 sm:columns-2 lg:columns-3 xl:columns-4 p-12">
-		<project-item
-			v-for="project in articles"
-			:key="project.id"
-			:project="project"
-		/>
+		<project-item v-for="project in articles" :key="project.id" :project="project" />
 	</section>
 </template>
 
@@ -17,7 +13,6 @@ import { usePredictionsStore } from "@/stores/predictionsStore"
 const articlesStore = useArticlesStore()
 const predictionsStore = usePredictionsStore()
 const articles = computed(() => articlesStore.articles)
-const predictions = computed(() => predictionsStore.predictions)
 
 onMounted(async () => {
 	articlesStore.fetchArticles()
