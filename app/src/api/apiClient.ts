@@ -38,6 +38,9 @@ export async function fetchBetsAPI() {
 }
 
 export async function fetchArticlesAPI() {
+	console.log("apiclient: " + apiClient)
+	console.log("prod env: " + import.meta.env.VITE_BASE_URL_PROD)
+	console.log("vite build env: " + import.meta.env.VITE_BUILD_ENV)
 	const response = await apiClient.get("/articles?populate=*")
 	return response.data.data
 }
