@@ -4,7 +4,7 @@
 		<p class="font-overpass font-thin">{{ article.attributes?.ingress }}</p>
 	</section>
 	<section>
-		<div v-if="article.attributes?.body" class="p-8" v-html="textBody(article.attributes?.body)">
+		<div v-if="article.attributes?.body" class="p-8 prose" v-html="textBody(article.attributes?.body)">
 		</div>
 	</section>
 	<!-- <section v-if="article.attributes?.links.length">
