@@ -5,8 +5,6 @@
 			:key="project.id"
 			:project="project"
 		/>
-		<div>{{ articles }}</div>
-		<div>{{ predictions }}</div>
 	</section>
 </template>
 
