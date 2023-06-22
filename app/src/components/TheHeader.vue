@@ -1,6 +1,6 @@
 <template>
 	<header class="bg-gray-800 text-white">
-		<nav class="container mx-auto px-4 py-2 flex items-center justify-between">
+		<nav class="mx-auto px-4 py-2 flex items-center justify-between">
 			<div>
 				<router-link to="/" class="block w-8">
 					<svg
