@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router"
 import HomeView from "../views/HomeView.vue"
 import ArticleView from "../views/ArticleView.vue"
+import NotFoundView from "../views/NotFoundView.vue"
 import LoginView from "../views/LoginView.vue"
 import ProfileView from "../views/ProfileView.vue"
 
@@ -36,9 +37,9 @@ const router = createRouter({
 			component: () => import("../views/AboutView.vue"),
 		},
 		{
-			path: "/:catchAll(.*)",
-			redirect: "/about",
-		},
+      path: '/:catchAll(.*)',
+      component: NotFoundView,
+    },
 	],
 })
 

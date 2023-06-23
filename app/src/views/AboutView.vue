@@ -1,6 +1,6 @@
 <template>
 	<main>
-		<h1>What is this</h1>
+		<h1>About</h1>
 	</main>
 </template>
 
