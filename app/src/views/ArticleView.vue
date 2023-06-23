@@ -4,8 +4,7 @@
 		<p class="font-overpass font-thin">{{ article.attributes?.ingress }}</p>
 	</section>
 	<section class="flex justify-center">
-		<div v-if="article.attributes?.body" class="p-8 prose" v-html="textBody(article.attributes?.body)">
-		</div>
+		<div v-if="article.attributes?.body" class="p-8 prose" v-html="textBody(article.attributes?.body)"></div>
 	</section>
 	<!-- <section v-if="article.attributes?.links.length">
 		{{ article.attributes?.links }}
@@ -15,17 +14,16 @@
 <script setup lang="ts">
 import { onMounted, computed } from "vue"
 import { useArticlesStore } from "@/stores/articlesStore"
-import { useRoute } from 'vue-router'
-import MarkdownIt from 'markdown-it'
+import { useRoute } from "vue-router"
+import MarkdownIt from "markdown-it"
 
 const md = new MarkdownIt()
 const route = useRoute()
 const articlesStore = useArticlesStore()
 const article = computed(() => articlesStore.currentArticle)
-const textBody = ((markdownText: string) => {
+const textBody = (markdownText: string) => {
 	return md.render(markdownText)
-})
-
+}
 
 onMounted(() => {
 	articlesStore.fetchArticle(route.params.id?.toString())

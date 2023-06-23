@@ -38,12 +38,12 @@ export const useArticlesStore = defineStore("articles", {
 			} finally {
 				this.loading = false
 			}
-		}
+		},
 	},
 })
 
 function getImageUrl(project: Article) {
 	// @ts-ignore
-	const relativeUrl = project.attributes.image.data[0].attributes.formats['medium'].url
+	const relativeUrl = project.attributes.image.data[0].attributes.formats["medium"].url
 	return `${strapiServerUrl}${relativeUrl}`
 }

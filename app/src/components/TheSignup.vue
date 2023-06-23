@@ -3,9 +3,7 @@
 		<h2>Sign Up</h2>
 		<form @submit.prevent="signup">
 			<div class="mb-4">
-				<label class="block text-gray-700 font-bold mb-2" for="username">
-					Username
-				</label>
+				<label class="block text-gray-700 font-bold mb-2" for="username"> Username </label>
 				<input
 					v-model="username"
 					required
@@ -16,9 +14,7 @@
 				/>
 			</div>
 			<div class="mb-4">
-				<label class="block text-gray-700 font-bold mb-2" for="email">
-					Email
-				</label>
+				<label class="block text-gray-700 font-bold mb-2" for="email"> Email </label>
 				<input
 					v-model="email"
 					required
@@ -29,9 +25,7 @@
 				/>
 			</div>
 			<div class="mb-6">
-				<label class="block text-gray-700 font-bold mb-2" for="password">
-					Password
-				</label>
+				<label class="block text-gray-700 font-bold mb-2" for="password"> Password </label>
 				<input
 					v-model="password"
 					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

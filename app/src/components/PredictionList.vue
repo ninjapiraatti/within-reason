@@ -1,13 +1,7 @@
 <template>
-	<div
-		class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 xxl:grid-cols-6"
-	>
+	<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 xxl:grid-cols-6">
 		{{ props.title }}
-		<div
-			v-for="prediction in predictions"
-			:key="prediction.title"
-			class="bg-white rounded-lg shadow-md p-4"
-		>
+		<div v-for="prediction in predictions" :key="prediction.title" class="bg-white rounded-lg shadow-md p-4">
 			<h3 class="text-lg font-semibold mb-2">
 				{{ prediction.title }}
 			</h3>
@@ -18,18 +12,10 @@
 			<p class="text-gray-600">{{ prediction.description }}</p>
 			<div v-if="loggedIn" class="mt-4 flex justify-center items-center">
 				<div class="flex space-x-4">
-					<button
-						class="text-blue-600"
-						@click="loggedIn ? createBet(prediction, true) : (showModal = true)"
-					>
+					<button class="text-blue-600" @click="loggedIn ? createBet(prediction, true) : (showModal = true)">
 						<hand-thumb-up-icon class="h-6 w-6" />
 					</button>
-					<button
-						class="text-red-600"
-						@click="
-							loggedIn ? createBet(prediction, false) : (showModal = true)
-						"
-					>
+					<button class="text-red-600" @click="loggedIn ? createBet(prediction, false) : (showModal = true)">
 						<hand-thumb-down-icon class="h-6 w-6" />
 					</button>
 				</div>

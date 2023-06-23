@@ -1,10 +1,5 @@
 <template>
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		fill="none"
-		viewBox="0 0 600 600"
-		stroke="currentColor"
-	>
+	<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 600 600" stroke="currentColor">
 		<g transform="matrix(1.17188,0,0,1.17188,300,300)">
 			<g id="github.svg" transform="matrix(1,0,0,1,-256,-256)">
 				<path

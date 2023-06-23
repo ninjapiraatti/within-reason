@@ -1,19 +1,14 @@
 // src/api/apiClient.ts
-import type {
-	Prediction,
-	LoginCredentials,
-	User,
-	RegisterUser,
-	Bet,
-} from "@/types"
+import type { Prediction, LoginCredentials, User, RegisterUser, Bet } from "@/types"
 import axios from "axios"
 
 const jwt = localStorage.getItem("jwt")
 
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_BUILD_ENV === 'production' 
-    ? import.meta.env.VITE_BASE_URL_PROD 
-    : import.meta.env.VITE_BASE_URL_LOCAL,
+	baseURL:
+		import.meta.env.VITE_BUILD_ENV === "production"
+			? import.meta.env.VITE_BASE_URL_PROD
+			: import.meta.env.VITE_BASE_URL_LOCAL,
 })
 
 const config = {
@@ -50,15 +45,9 @@ export async function fetchArticleAPI(id: string) {
 	return response.data.data
 }
 
-export async function createPredictionAPI(
-	prediction: Prediction
-): Promise<Prediction> {
+export async function createPredictionAPI(prediction: Prediction): Promise<Prediction> {
 	try {
-		const response = await apiClient.post(
-			"/predictions",
-			{ data: prediction },
-			config
-		)
+		const response = await apiClient.post("/predictions", { data: prediction }, config)
 		return response.data
 	} catch (error) {
 		console.error(error)

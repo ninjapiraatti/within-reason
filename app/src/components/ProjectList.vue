@@ -18,7 +18,6 @@ onMounted(async () => {
 	articlesStore.fetchArticles()
 	predictionsStore.fetchPredictions()
 })
-
 </script>
 
 <style scoped>

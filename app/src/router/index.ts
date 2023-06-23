@@ -20,7 +20,7 @@ const router = createRouter({
 		},
 		{
 			path: "/projects/:id",
-			component: ArticleView
+			component: ArticleView,
 		},
 		{
 			path: "/profile",
@@ -37,9 +37,9 @@ const router = createRouter({
 			component: () => import("../views/AboutView.vue"),
 		},
 		{
-      path: '/:catchAll(.*)',
-      component: NotFoundView,
-    },
+			path: "/:catchAll(.*)",
+			component: NotFoundView,
+		},
 	],
 })
 

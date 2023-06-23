@@ -5,16 +5,9 @@
 			<TheLogin />
 		</div>
 		<div class="mt-4">
-			<a
-				class="text-blue-500 hover:underline cursor-pointer"
-				@click="showSignUp = true"
-				>Register</a
-			>
+			<a class="text-blue-500 hover:underline cursor-pointer" @click="showSignUp = true">Register</a>
 		</div>
-		<div
-			v-if="showSignUp"
-			class="mt-8 bg-white rounded-lg shadow-md p-8 w-full md:w-96"
-		>
+		<div v-if="showSignUp" class="mt-8 bg-white rounded-lg shadow-md p-8 w-full md:w-96">
 			<TheSignup />
 		</div>
 	</div>
