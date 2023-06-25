@@ -22,9 +22,6 @@
 				</router-link>
 			</div>
 			<div class="hidden md:flex items-center space-x-4 z-10">
-				<!-- <router-link to="/about" class="text-white hover:text-gray-300"
-					>About</router-link
-				> -->
 				<div class="relative">
 					<button disabled @click.stop="toggleDropdown" class="focus:outline-none">
 						<UserIcon class="h-6 w-6" />
