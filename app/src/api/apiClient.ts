@@ -7,8 +7,8 @@ const jwt = localStorage.getItem("jwt")
 const apiClient = axios.create({
 	baseURL:
 		import.meta.env.VITE_BUILD_ENV === "production"
-			? import.meta.env.VITE_BASE_URL_PROD
-			: import.meta.env.VITE_BASE_URL_LOCAL,
+			? import.meta.env.VITE_BASE_URL_PROD + "/api"
+			: import.meta.env.VITE_BASE_URL_LOCAL + "/api",
 })
 
 const config = {
@@ -37,6 +37,7 @@ export async function fetchArticlesAPI() {
 	console.log("prod env: " + import.meta.env.VITE_BASE_URL_PROD)
 	console.log("vite build env: " + import.meta.env.VITE_BUILD_ENV)
 	const response = await apiClient.get("/articles?populate=*")
+	
 	return response.data.data
 }
 

@@ -2,7 +2,7 @@ import { defineStore } from "pinia"
 import { fetchArticlesAPI, fetchArticleAPI } from "@/api/apiClient"
 import type { Article } from "@/types"
 
-const strapiServerUrl = "https://api.tuomaslouekari.fi"
+const baseURL = import.meta.env.VITE_BUILD_ENV === "production" ? import.meta.env.VITE_BASE_URL_PROD : import.meta.env.VITE_BASE_URL_LOCAL
 
 export const useArticlesStore = defineStore("articles", {
 	state: () => ({
@@ -45,5 +45,5 @@ export const useArticlesStore = defineStore("articles", {
 function getImageUrl(project: Article) {
 	// @ts-ignore
 	const relativeUrl = project.attributes.image.data[0].attributes.formats["medium"].url
-	return `${strapiServerUrl}${relativeUrl}`
+	return `${baseURL}${relativeUrl}`
 }
