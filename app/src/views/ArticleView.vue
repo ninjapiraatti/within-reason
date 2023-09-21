@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, computed, ref } from "vue"
+import { onMounted, computed, ref, type Ref } from "vue"
 import { useArticlesStore } from "@/stores/articlesStore"
 import { useRoute } from "vue-router"
 import MarkdownIt from "markdown-it"
@@ -27,7 +27,7 @@ const article = computed(() => articlesStore.currentArticle)
 const textBody = (markdownText: string) => {
 	return md.render(markdownText)
 }
-const wasmContainer = ref(null)
+const wasmContainer: Ref<HTMLElement | null> = ref(null)
 
 onMounted(async () => {
 	await articlesStore.fetchArticle(route.params.id?.toString())

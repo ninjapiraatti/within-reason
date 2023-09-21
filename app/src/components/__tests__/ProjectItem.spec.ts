@@ -20,6 +20,7 @@ describe("Project Item", () => {
 						body: "Ipsum",
 						image: "/imagepath/image.jpg",
 						video: "/videopath/video.mp4",
+						wasm: "",
 					},
 					imageUrl: "/imagepath/image.jpg",
 					meta: {},
