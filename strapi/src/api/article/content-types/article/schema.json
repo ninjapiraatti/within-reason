@@ -47,6 +47,9 @@
       "type": "component",
       "repeatable": true,
       "component": "snippets.external-link"
+    },
+    "wasm": {
+      "type": "string"
     }
   }
 }

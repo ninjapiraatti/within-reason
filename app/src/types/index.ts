@@ -49,6 +49,7 @@ export interface ArticleAttributes {
 	image: string
 	video: string
 	body: string
+	wasm: string
 }
 
 export type Article = StrapiResponse<ArticleAttributes>
