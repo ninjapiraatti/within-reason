@@ -58,7 +58,8 @@ jobs:
     needs: deploy-backend
     env:
       VITE_BUILD_ENV: 'production' 
-      VITE_BASE_URL_PROD: 'https://api.tuomaslouekari.fi/api'
+      VITE_STRAPI_API_URL_PROD: 'https://api.tuomaslouekari.fi/api'
+      VITE_STRAPI_BASE_URL_PROD: 'https://api.tuomaslouekari.fi'
 
     steps:
     - name: Checkout code

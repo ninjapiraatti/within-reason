@@ -2,7 +2,7 @@ import { defineStore } from "pinia"
 import { fetchArticlesAPI, fetchArticleAPI } from "@/api/apiClient"
 import type { Article } from "@/types"
 
-const baseURL = import.meta.env.VITE_BUILD_ENV === "production" ? import.meta.env.VITE_BASE_URL_PROD : import.meta.env.VITE_BASE_URL_LOCAL
+const baseURL = import.meta.env.VITE_BUILD_ENV === "production" ? import.meta.env.VITE_STRAPI_BASE_URL_PROD : import.meta.env.VITE_STRAPI_BASE_URL_LOCAL
 
 export const useArticlesStore = defineStore("articles", {
 	state: () => ({
