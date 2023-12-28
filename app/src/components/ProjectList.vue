@@ -8,15 +8,12 @@
 import { onMounted, computed } from "vue"
 import ProjectItem from "@/components/ProjectItem.vue"
 import { useArticlesStore } from "@/stores/articlesStore"
-import { usePredictionsStore } from "@/stores/predictionsStore"
 
 const articlesStore = useArticlesStore()
-const predictionsStore = usePredictionsStore()
 const articles = computed(() => articlesStore.articles)
 
 onMounted(async () => {
 	articlesStore.fetchArticles()
-	predictionsStore.fetchPredictions()
 })
 </script>
 

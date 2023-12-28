@@ -93,7 +93,6 @@ const handleClickOutside = () => {
 }
 
 onMounted(async () => {
-	await contentStore.fetchSettingsData()
 	document.addEventListener("click", handleClickOutside)
 })
 
