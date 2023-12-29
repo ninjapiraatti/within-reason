@@ -48,7 +48,6 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           cd /var/www/within-reason/strapi/
-          sudo nvm use 18
           sudo pm2 startOrRestart ecosystem.config.js # replace with your PM2 config file
 
   deploy-frontend:
