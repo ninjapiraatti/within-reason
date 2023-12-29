@@ -23,7 +23,7 @@ jobs:
       run: |
         cd strapi
         npm ci
-        npm run build
+        echo "n" | npm run build
 
     - name: List files in strapi directory
       run: |
