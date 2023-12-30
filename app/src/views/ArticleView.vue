@@ -32,7 +32,7 @@ const wasmContainer: Ref<HTMLElement | null> = ref(null)
 onMounted(async () => {
 	await articlesStore.fetchArticle(route.params.id?.toString())
 	if (article.value.attributes?.wasm) {
-			const wasmPath = '/projects/furious-purpose/furious-purpose.js'
+			const wasmPath = '/dist/projects/furious-purpose/furious-purpose.js'
 			const wasmModule = await import(/* @vite-ignore */ wasmPath)
 			// Initialize or run the wasm module
 			console.log("wasm:", wasmModule)
