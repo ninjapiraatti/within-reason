@@ -20,6 +20,7 @@ import { useArticlesStore } from "@/stores/articlesStore"
 import { useRoute } from "vue-router"
 import MarkdownIt from "markdown-it"
 
+const VITE_BUILD_ENV = import.meta.env.VITE_BUILD_ENV
 const md = new MarkdownIt()
 const route = useRoute()
 const articlesStore = useArticlesStore()
@@ -32,7 +33,8 @@ const wasmContainer: Ref<HTMLElement | null> = ref(null)
 onMounted(async () => {
 	await articlesStore.fetchArticle(route.params.id?.toString())
 	if (article.value.attributes?.wasm) {
-			const wasmPath = '/projects/furious-purpose/furious-purpose.js'
+			const distPath = VITE_BUILD_ENV == "local" ? "/dist" : ""
+			const wasmPath = `${distPath}/projects/furious-purpose/furious-purpose.js`
 			const wasmModule = await import(/* @vite-ignore */ wasmPath)
 			// Initialize or run the wasm module
 			console.log("wasm:", wasmModule)
