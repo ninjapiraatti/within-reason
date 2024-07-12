@@ -1,7 +1,7 @@
 <template>
 	<div class="overflow-hidden">
 		<Transition name="slide-fade" mode="out-in">
-			<component :is="slides[currentSlide]" @next="nextSlide" :key="currentSlide"></component>
+			<component :is="slides[currentSlide]" @next="nextSlide" @first="currentSlide = 0" :key="currentSlide"></component>
 		</Transition>
 	</div>
 </template>
@@ -9,8 +9,9 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import SlideA from "@/components/SlideA.vue"
+import SlideB from "@/components/SlideB.vue"
 
-const slides = [SlideA /* , OtherSlide, AnotherSlide, etc. */]
+const slides = [SlideA, SlideB]
 const currentSlide = ref(0)
 
 const nextSlide = () => {
