@@ -1,7 +1,13 @@
 <template>
 	<div class="overflow-hidden">
-		<Transition name="slide-fade" mode="out-in">
-			<component :is="slides[currentSlide]" @next="nextSlide" @first="currentSlide = 0" :key="currentSlide"></component>
+		<Transition name="slide-fade">
+			<component
+				:is="slides[currentSlide]"
+				@next="nextSlide"
+				@first="currentSlide = 0"
+				:key="currentSlide"
+				class="absolute top-0 left-0 w-full h-full"
+			></component>
 		</Transition>
 	</div>
 </template>
@@ -22,6 +28,9 @@ const nextSlide = () => {
 </script>
 
 <style scoped>
+.slide-container {
+	background-color: #092f3f; /* Set this to match your slides' background */
+}
 .slide-fade-enter-active,
 .slide-fade-leave-active {
 	transition: all 0.5s ease;
@@ -29,11 +38,9 @@ const nextSlide = () => {
 
 .slide-fade-enter-from {
 	transform: translateX(100%);
-	opacity: 0;
 }
 
 .slide-fade-leave-to {
 	transform: translateX(-100%);
-	opacity: 0;
 }
 </style>
