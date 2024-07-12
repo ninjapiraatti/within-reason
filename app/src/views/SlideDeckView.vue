@@ -6,6 +6,7 @@
 				@next="nextSlide"
 				:key="currentSlide"
 				class="absolute top-0 left-0 w-full h-full"
+				@wheel="handleWheel"
 			></component>
 		</Transition>
 	</div>
@@ -31,6 +32,20 @@ const nextSlide = () => {
 const previousSlide = () => {
 	if (currentSlide.value > 0) {
 		currentSlide.value--
+	}
+}
+
+const handleWheel = (event: WheelEvent) => {
+	// Prevent the default scrolling behavior
+	event.preventDefault()
+
+	// Check if it's a horizontal scroll (shift + scroll or trackpad horizontal scroll)
+	if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
+		if (event.deltaX > 0) {
+			nextSlide()
+		} else {
+			previousSlide()
+		}
 	}
 }
 
