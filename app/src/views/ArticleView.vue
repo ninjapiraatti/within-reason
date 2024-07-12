@@ -40,7 +40,7 @@ onMounted(async () => {
 		console.log("wasm:", wasmModule)
 		//wasmModule.init(wasmContainer.value)
 		wasmModule.default()
-		// Wait for a short delay to ensure canvas is attached to the DOM. 
+		// Wait for a short delay to ensure canvas is attached to the DOM.
 		// This is a hacky solution; ideally, you'd have a better way to determine when the canvas is ready.
 		/*setTimeout(() => {
 				const canvasElement = document.querySelector('canvas')  // assuming there's only one canvas, adjust if necessary
@@ -52,11 +52,11 @@ onMounted(async () => {
 		*/
 		const observer = new MutationObserver((mutations) => {
 			for (let mutation of mutations) {
-				if (mutation.type === 'childList') {
-					const canvasElement = document.querySelector('canvas')
+				if (mutation.type === "childList") {
+					const canvasElement = document.querySelector("canvas")
 					if (canvasElement && wasmContainer.value) {
 						wasmContainer.value.appendChild(canvasElement)
-						observer.disconnect()  // Stop observing once we've moved the canvas
+						observer.disconnect() // Stop observing once we've moved the canvas
 						break
 					}
 				}

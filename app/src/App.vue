@@ -1,5 +1,5 @@
 <template>
-	<TheHeader v-if="showHeader"/>
+	<TheHeader v-if="showHeader" />
 	<RouterView />
 </template>
 

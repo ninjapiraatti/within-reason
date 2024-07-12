@@ -11,7 +11,7 @@ describe("Project Item", () => {
 					"router-link": true,
 				},
 			},
-			props: { 
+			props: {
 				project: {
 					id: 1,
 					attributes: {
