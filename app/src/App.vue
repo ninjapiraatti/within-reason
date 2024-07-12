@@ -1,15 +1,19 @@
 <template>
-	<TheHeader />
+	<TheHeader v-if="showHeader"/>
 	<RouterView />
 </template>
 
 <script setup lang="ts">
 import { RouterView } from "vue-router"
 import TheHeader from "./components/TheHeader.vue"
-import { onMounted } from "vue"
+import { onMounted, computed } from "vue"
 import { useUsersStore } from "./stores/usersStore"
+import { useRoute } from "vue-router"
 
 const usersStore = useUsersStore()
+const route = useRoute()
+
+const showHeader = computed(() => !route.meta.hideHeader)
 
 onMounted(() => {
 	usersStore.initializeAuth()
