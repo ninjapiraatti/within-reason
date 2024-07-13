@@ -1,6 +1,6 @@
 <template>
 	<div class="slide-container relative overflow-hidden h-screen w-screen" ref="swipeTarget">
-		<Transition name="slide-fade">
+		<Transition :name="transitionName">
 			<component
 				:is="slides[currentSlide]"
 				@next="nextSlide"
@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue"
+import { ref, onMounted, computed } from "vue"
 import { useSwipe } from "@vueuse/core"
 import SlideA from "@/components/SlideA.vue"
 import SlideB from "@/components/SlideB.vue"
@@ -22,15 +22,20 @@ import SlideB from "@/components/SlideB.vue"
 const slides = [SlideA, SlideB]
 const currentSlide = ref(0)
 const swipeTarget = ref<HTMLElement | null>(null)
+const isMovingForward = ref(true)
+
+const transitionName = computed(() => (isMovingForward.value ? "slide-right" : "slide-left"))
 
 const nextSlide = () => {
 	if (currentSlide.value < slides.length - 1) {
+		isMovingForward.value = true
 		currentSlide.value++
 	}
 }
 
 const previousSlide = () => {
 	if (currentSlide.value > 0) {
+		isMovingForward.value = false
 		currentSlide.value--
 	}
 }
@@ -71,21 +76,36 @@ onMounted(() => {
 
 <style scoped>
 .slide-container {
-	background-color: #ffffff; /* Set this to match your slides' background */
+	background-color: #ffffff;
 }
 
-.slide-fade-enter-active,
-.slide-fade-leave-active {
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
 	transition: all 0.5s ease;
 }
 
-.slide-fade-enter-from {
+.slide-right-enter-from {
 	transform: translateX(100%);
-	opacity: 0;
 }
 
-.slide-fade-leave-to {
+.slide-right-leave-to {
 	transform: translateX(-100%);
-	opacity: 0;
+}
+
+.slide-left-enter-from {
+	transform: translateX(-100%);
+}
+
+.slide-left-leave-to {
+	transform: translateX(100%);
+}
+
+.slide-right-enter-to,
+.slide-right-leave-from,
+.slide-left-enter-to,
+.slide-left-leave-from {
+	transform: translateX(0);
 }
 </style>
