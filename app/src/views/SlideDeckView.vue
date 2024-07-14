@@ -1,5 +1,8 @@
 <template>
-	<div class="slide-container relative overflow-hidden h-screen w-screen" ref="swipeTarget">
+	<div
+		class="slide-container relative overflow-hidden h-screen w-screen bg-gradient-to-br from-indigo-500 to-purple-600"
+		ref="swipeTarget"
+	>
 		<Transition :name="transitionName">
 			<component
 				:is="slides[currentSlide]"
@@ -59,14 +62,11 @@ onMounted(() => {
 		console.log("Swipe target not found")
 		return
 	}
-	const { isSwiping, direction } = useSwipe(swipeTarget, {
+	const { direction } = useSwipe(swipeTarget, {
 		onSwipe(e) {
-			console.log("event")
 			if (direction.value === "left") {
-				console.log("left")
 				nextSlide()
 			} else if (direction.value === "right") {
-				console.log("right")
 				previousSlide()
 			}
 		},
@@ -75,10 +75,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.slide-container {
-	background-color: #ffffff;
-}
-
+/* Vue transition classes */
 .slide-right-enter-active,
 .slide-right-leave-active,
 .slide-left-enter-active,
