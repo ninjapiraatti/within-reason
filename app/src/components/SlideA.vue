@@ -4,24 +4,10 @@
 	>
 		<h1 class="text-6xl font-bold mb-6 animate-fadeIn">Vue 3 Presentation</h1>
 		<p class="text-2xl mb-12 animate-fadeIn animation-delay-300">Exploring the Power of Composition API</p>
-		<button
-			@click="nextSlide"
-			class="bg-white text-indigo-600 px-8 py-3 rounded-full text-xl font-semibold hover:bg-indigo-100 transition duration-300 ease-in-out animate-fadeIn animation-delay-600"
-		>
-			Begin Journey
-		</button>
 	</div>
 </template>
 
-<script setup lang="ts">
-import { defineEmits } from "vue"
-
-const emit = defineEmits(["next"])
-
-const nextSlide = () => {
-	emit("next")
-}
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 @keyframes fadeIn {
