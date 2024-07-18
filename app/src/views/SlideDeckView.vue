@@ -6,12 +6,17 @@
 		<Transition :name="transitionName">
 			<component
 				:is="slides[currentSlide]"
-				@next="nextSlide"
 				:key="currentSlide"
 				class="absolute top-0 left-0 w-full h-full"
 				@wheel="handleWheel"
 			></component>
 		</Transition>
+	</div>
+	<div class="absolute top-10 right-10 z-10">
+		<button @click="nextSlide">Next</button>
+	</div>
+	<div class="absolute top-10 left-10 z-10">
+		<button @click="previousSlide">Previous</button>
 	</div>
 </template>
 
