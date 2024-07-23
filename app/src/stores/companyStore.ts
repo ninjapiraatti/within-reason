@@ -5,6 +5,8 @@ import type { Company } from "@/types"
 export const useCompanyStore = defineStore("company", {
 	state: () => ({
 		company: {} as Company,
+		loading: true,
+		error: "",
 	}),
 	actions: {
 		async fetchCompany(id: string) {
