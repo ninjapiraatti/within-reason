@@ -74,6 +74,11 @@ export async function createBetAPI(bet: Bet): Promise<Bet> {
 	}
 }
 
+export async function fetchCompanyAPI(id: string) {
+	const response = await apiClient.get(`/companies/${id}?populate=*`)
+	return response.data.data
+}
+
 // Login function
 export async function loginAPI(credentials: LoginCredentials): Promise<{
 	jwt: string

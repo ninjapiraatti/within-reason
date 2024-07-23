@@ -60,3 +60,8 @@ export interface StrapiResponse<T> {
 	imageUrl: string
 	meta: Record<string, unknown>
 }
+
+export interface Company {
+	title: string
+	companydata: Record<string, unknown>
+}

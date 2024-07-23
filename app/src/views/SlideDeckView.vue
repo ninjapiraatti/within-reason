@@ -7,6 +7,7 @@
 			<component
 				:is="slides[currentSlide]"
 				:key="currentSlide"
+				:company="company"
 				class="absolute top-0 left-0 w-full h-full"
 				@wheel="handleWheel"
 			></component>
@@ -23,12 +24,14 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue"
 import { useSwipe } from "@vueuse/core"
+import { useCompanyStore } from "@/stores/companyStore"
 import SlideA from "@/components/SlideA.vue"
 import SlideB from "@/components/SlideB.vue"
-// Import other slides here
 
+const companyStore = useCompanyStore()
 const slides = [SlideA, SlideB]
 const currentSlide = ref(0)
+const company = computed(() => companyStore.company)
 const swipeTarget = ref<HTMLElement | null>(null)
 const isMovingForward = ref(true)
 
@@ -63,6 +66,7 @@ const handleWheel = (event: WheelEvent) => {
 }
 
 onMounted(() => {
+	companyStore.fetchCompany("1")
 	if (!swipeTarget.value) {
 		console.log("Swipe target not found")
 		return

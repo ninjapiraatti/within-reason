@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "companies",
+  "info": {
+    "singularName": "company",
+    "pluralName": "companies",
+    "displayName": "Company"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "companydata": {
+      "type": "json"
+    }
+  }
+}

@@ -2,12 +2,17 @@
 	<div
 		class="slide-container flex flex-col items-center justify-center h-screen bg-gradient-to-br from-indigo-500 to-purple-600 text-white p-8"
 	>
-		<h1 class="text-6xl font-bold mb-6 animate-fadeIn">Vue 3 Presentation</h1>
+		<h1 class="text-6xl font-bold mb-6 animate-fadeIn">{{ company }}</h1>
 		<p class="text-2xl mb-12 animate-fadeIn animation-delay-300">Exploring the Power of Composition API</p>
 	</div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { Company } from "@/types"
+defineProps({
+	company: Object as () => Company,
+})
+</script>
 
 <style scoped>
 @keyframes fadeIn {
