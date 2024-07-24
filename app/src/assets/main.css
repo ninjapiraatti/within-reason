@@ -3,11 +3,20 @@
 @tailwind utilities;
 
 @layer utilities {
-  .speech-bubble {
-    fill: #000;
-  }
-	.speech-bubble-md {
+	.speech-bubble {
 		fill: #fff;
+		position: relative;
+	}
+	.speech-bubble-arrow {
+		position: absolute;
+		top: -4.1rem;
+		left: calc(50% - 4.5rem);
+		width: 3rem;
+	}
+	.speech-bubble-arrow-md {
+		fill: #fff;
+		left: -3rem;
+		top: 50%;
 	}
 }
 

@@ -4,12 +4,13 @@
 	>
 		<div class="w-full md:w-3/4 flex flex-col md:flex-row items-center md:justify-start">
 			<img :src="tuoppiImg" alt="Tuomas Louekari" class="w-1/5 h-auto rounded-full" />
-			<div class="text-center md:text-left md:items-center">
-				<h1 class="text-6xl font-bold mb-6 animate-fadeIn">{{ company?.attributes.title }}</h1>
+			<div
+				class="md:text-left md:items-center rounded text-black bg-white speech-bubble px-8 py-4 mt-4 md:ml-8 md:mt-0"
+			>
 				<svg
 					width="100%"
 					height="100%"
-					class="speechbubble-arrow transform rotate-90 md:rotate-0 speech-bubble md:speech-bubble-md"
+					class="speechbubble-arrow transform rotate-90 speech-bubble-arrow md:rotate-0 md:speech-bubble-arrow-md"
 					viewBox="0 0 596 616"
 					version="1.1"
 					xmlns="http://www.w3.org/2000/svg"
@@ -24,6 +25,8 @@
 						/>
 					</g>
 				</svg>
+				<h1 class="text-6xl font-bold mb-6 animate-fadeIn">{{ company?.attributes.title }}</h1>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 			</div>
 		</div>
 	</div>
@@ -63,9 +66,5 @@ defineProps({
 
 .animation-delay-600 {
 	animation-delay: 600ms;
-}
-
-.speechbubble-arrow {
-	width: 3rem;
 }
 </style>
