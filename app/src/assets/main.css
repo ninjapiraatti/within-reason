@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .speech-bubble {
+    fill: #000;
+  }
+	.speech-bubble-md {
+		fill: #fff;
+	}
+}
+
 h1 {
 	@apply font-roboto font-thin;
 }
