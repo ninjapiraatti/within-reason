@@ -52,16 +52,17 @@ export interface ArticleAttributes {
 	wasm: string
 }
 
+export interface CompanyAttributes {
+	title: string
+	companydata: Record<string, unknown>
+}
+
 export type Article = StrapiResponse<ArticleAttributes>
+export type Company = StrapiResponse<CompanyAttributes>
 
 export interface StrapiResponse<T> {
 	id: number
 	attributes: T
 	imageUrl: string
 	meta: Record<string, unknown>
-}
-
-export interface Company {
-	title: string
-	companydata: Record<string, unknown>
 }

@@ -27,7 +27,7 @@
 import { ref, type Ref } from "vue"
 import type { Article } from "@/types"
 
-const props = defineProps({
+defineProps({
 	project: {
 		type: Object as () => Article,
 		default: () => ({

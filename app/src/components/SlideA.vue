@@ -20,7 +20,7 @@
 				</div>
 			</div>
 		</div>
-		<h1 class="text-6xl font-bold mb-6 animate-fadeIn">{{ company?.title }}</h1>
+		<h1 class="text-6xl font-bold mb-6 animate-fadeIn">{{ company?.attributes.title }}</h1>
 		<p class="text-2xl mb-12 animate-fadeIn animation-delay-300">Exploring the Power of Composition API</p>
 	</div>
 </template>
@@ -31,6 +31,10 @@ import tuoppiImg from "@/assets/tuoppi.jpg"
 import { GithubIcon, LinkedinIcon, MediumIcon } from "@/components/custom_icons"
 defineProps({
 	company: Object as () => Company,
+	default: () => ({
+		title: "lol",
+		companydata: {},
+	}),
 })
 </script>
 
