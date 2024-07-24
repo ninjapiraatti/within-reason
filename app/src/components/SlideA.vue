@@ -3,7 +3,7 @@
 		class="slide-container flex flex-col items-center justify-center h-screen bg-gradient-to-br from-indigo-500 to-purple-600 text-white p-8"
 	>
 		<div class="w-full md:w-3/4 flex flex-col md:flex-row items-center md:justify-start">
-			<img :src="tuoppiImg" alt="Tuomas Louekari" class="w-1/5 h-auto rounded-full" />
+			<img :src="tuoppiImg" alt="Tuomas Louekari" class="w-1/3 md:w-1/4 h-auto rounded-full" />
 			<div
 				class="md:text-left md:items-center rounded text-black bg-white speech-bubble px-8 py-4 mt-4 md:ml-8 md:mt-0"
 			>
