@@ -8,6 +8,7 @@
 				:is="slides[currentSlide]"
 				:key="currentSlide"
 				:company="company"
+				:slideKey="currentSlide"
 				class="absolute top-0 left-0 w-full h-full"
 				@wheel="handleWheel"
 			></component>
@@ -25,20 +26,37 @@
 import { ref, onMounted, computed } from "vue"
 import { useSwipe } from "@vueuse/core"
 import { useCompanyStore } from "@/stores/companyStore"
-import SlideA from "@/components/SlideA.vue"
-import SlideB from "@/components/SlideB.vue"
+import IntroSlide from "@/components/IntroSlide.vue"
+import SkillSlide from "@/components/SkillSlide.vue"
 
 const companyStore = useCompanyStore()
-const slides = [SlideA, SlideB]
 const currentSlide = ref(0)
 const company = computed(() => companyStore.company)
 const swipeTarget = ref<HTMLElement | null>(null)
 const isMovingForward = ref(true)
-
 const transitionName = computed(() => (isMovingForward.value ? "slide-right" : "slide-left"))
+const componentMap = {
+	IntroSlide: IntroSlide,
+	SkillSlide: SkillSlide,
+}
+
+const slides = computed(() => {
+	if (!company.value.attributes) return []
+
+	const slideComponents = [IntroSlide]
+	console.log(company.value.attributes.companydata?.slides)
+	company.value.attributes.companydata?.slides.forEach((slide) => {
+		if (!slide.slideComponent) return
+		const slideComponent = slide.slideComponent as string
+		if (componentMap[slideComponent]) {
+			slideComponents.push(componentMap[slideComponent])
+		}
+	})
+	return slideComponents
+})
 
 const nextSlide = () => {
-	if (currentSlide.value < slides.length - 1) {
+	if (currentSlide.value < slides.value.length - 1) {
 		isMovingForward.value = true
 		currentSlide.value++
 	}
