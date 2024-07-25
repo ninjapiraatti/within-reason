@@ -36,8 +36,8 @@ const swipeTarget = ref<HTMLElement | null>(null)
 const isMovingForward = ref(true)
 const transitionName = computed(() => (isMovingForward.value ? "slide-right" : "slide-left"))
 const componentMap = {
-	IntroSlide: IntroSlide,
-	SkillSlide: SkillSlide,
+	IntroSlide,
+	SkillSlide,
 }
 
 const slides = computed(() => {
@@ -47,7 +47,7 @@ const slides = computed(() => {
 	console.log(company.value.attributes.companydata?.slides)
 	company.value.attributes.companydata?.slides.forEach((slide) => {
 		if (!slide.slideComponent) return
-		const slideComponent = slide.slideComponent as string
+		const slideComponent = slide.slideComponent as keyof typeof componentMap
 		if (componentMap[slideComponent]) {
 			slideComponents.push(componentMap[slideComponent])
 		}
