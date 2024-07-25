@@ -30,6 +30,10 @@ h1 {
 	@apply font-roboto font-thin;
 }
 
+body {
+	@apply font-roboto font-light;
+}
+
 .prose :where(code):not(:where([class~="not-prose"] *))::before {
 	content: "";
 }

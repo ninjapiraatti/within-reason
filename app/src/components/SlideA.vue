@@ -25,8 +25,16 @@
 						/>
 					</g>
 				</svg>
-				<h1 class="text-6xl font-bold mb-6 animate-fadeIn">{{ company?.attributes.title }}</h1>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+				<p>
+					Hi, I'm Tuomas and I built this slide deck to make your job easier. Let's start with the main question: why
+					should {{ company?.attributes?.title }} hire me:
+				</p>
+				<ul>
+					<li v-for="item in company?.attributes?.companydata?.slides" :key="item">
+						{{ item?.title }}
+					</li>
+				</ul>
+				<p>If you kindly scroll onwards, I will prove these claims.</p>
 			</div>
 		</div>
 	</div>
@@ -35,6 +43,7 @@
 <script setup lang="ts">
 import type { Company } from "@/types"
 import tuoppiImg from "@/assets/tuoppi.jpg"
+
 defineProps({
 	company: Object as () => Company,
 	default: () => ({
