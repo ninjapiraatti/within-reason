@@ -1,13 +1,12 @@
 <template>
 	<div
-		class="slide-container relative overflow-hidden h-screen w-screen bg-gradient-to-br from-indigo-500 to-purple-600"
+		class="relative w-screen bg-gradient-to-br from-indigo-500 to-purple-600 snap-y snap-mandatory h-screen overflow-auto"
 	>
 		<component
 			v-for="(slide, index) in slides"
 			:key="index"
 			:is="slide"
-			class="slide snap-start w-full h-full"
-			:class="{ hidden: index !== currentSlide }"
+			class="slide w-full h-full snap-center"
 			:company="company"
 			:slideKey="index"
 		/>
@@ -15,13 +14,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue"
+import { onMounted, computed } from "vue"
 import { useCompanyStore } from "@/stores/companyStore"
 import IntroSlide from "@/components/IntroSlide.vue"
 import SkillSlide from "@/components/SkillSlide.vue"
 
 const companyStore = useCompanyStore()
-const currentSlide = ref(0)
+//const currentSlide = ref(0)
 const company = computed(() => companyStore.company)
 const componentMap = {
 	IntroSlide,
