@@ -1,10 +1,12 @@
 <template>
-	<div
-		class="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-indigo-500 to-green-600 text-white p-8"
-	>
-		<h1 class="text-6xl font-bold mb-6 animate-fadeIn">Slide {{ slideKey }}</h1>
-		<p class="text-2xl mb-12 animate-fadeIn animation-delay-300">Exploring the Power of Composition API</p>
-	</div>
+	<Transition name="fadeIn">
+		<div
+			class="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-indigo-500 to-green-600 text-white p-8"
+		>
+			<h1 class="text-6xl font-bold mb-6 animate-fadeIn">Slide {{ slideKey }}</h1>
+			<p class="text-2xl mb-12 animate-fadeIn animation-delay-300">Exploring the Power of Composition API</p>
+		</div>
+	</Transition>
 </template>
 
 <script setup lang="ts">
@@ -20,7 +22,6 @@ defineProps({
 </script>
 
 <style scoped>
-/*
 @keyframes fadeIn {
 	from {
 		opacity: 0;
@@ -43,5 +44,4 @@ defineProps({
 .animation-delay-600 {
 	animation-delay: 600ms;
 }
-	*/
 </style>
