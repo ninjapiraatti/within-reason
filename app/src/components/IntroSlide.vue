@@ -44,13 +44,10 @@
 import type { Company } from "@/types"
 import tuoppiImg from "@/assets/tuoppi.jpg"
 
-defineProps({
-	company: Object as () => Company,
-	default: () => ({
-		title: "lol",
-		companydata: {},
-	}),
-})
+defineProps<{
+	company: Company
+	slideKey: number
+}>()
 </script>
 
 <style scoped>

@@ -20,7 +20,6 @@ import IntroSlide from "@/components/IntroSlide.vue"
 import SkillSlide from "@/components/SkillSlide.vue"
 
 const companyStore = useCompanyStore()
-//const currentSlide = ref(0)
 const company = computed(() => companyStore.company)
 const componentMap = {
 	IntroSlide,
@@ -28,10 +27,8 @@ const componentMap = {
 }
 
 const slides = computed(() => {
-	if (!company.value.attributes) return []
-
 	const slideComponents = [IntroSlide]
-	console.log(company.value.attributes.companydata?.slides)
+	if (!company.value.attributes) return slideComponents
 	company.value.attributes.companydata?.slides.forEach((slide) => {
 		if (!slide.slideComponent) return
 		const slideComponent = slide.slideComponent as keyof typeof componentMap
