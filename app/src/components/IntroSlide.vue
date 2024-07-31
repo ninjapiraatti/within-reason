@@ -1,6 +1,7 @@
 <template>
 	<div
-		class="slide-container flex flex-col items-center justify-center h-screen bg-gradient-to-br from-indigo-500 to-purple-600 text-white p-8"
+		class="slide-container flex flex-col items-center justify-center h-screen text-white p-8"
+		:style="backgroundColor"
 	>
 		<div class="w-full md:w-3/4 flex flex-col md:flex-row items-center md:justify-start">
 			<img :src="tuoppiImg" alt="Tuomas Louekari" class="w-1/3 md:w-1/4 h-auto rounded-full" />
@@ -41,13 +42,23 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue"
 import type { Company } from "@/types"
 import tuoppiImg from "@/assets/tuoppi.jpg"
 
-defineProps<{
+const props = defineProps<{
 	company: Company
 	slideKey: number
 }>()
+
+const backgroundColor = computed(() => {
+	const color = props.company?.attributes?.companydata?.color
+	console.log(props.company?.attributes?.companydata?.color)
+	if (color) {
+		return `background-image: linear-gradient(to bottom right, ${color}, yellow);`
+	}
+	return `background-image: linear-gradient(to bottom right, indigo, red);`
+})
 </script>
 
 <style scoped>
