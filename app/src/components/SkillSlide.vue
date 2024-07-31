@@ -8,7 +8,7 @@
 					<h1 class="text-6xl font-bold mb-6 animate-fadeIn">
 						{{ slideContent.title }}
 					</h1>
-					<p class="text-2xl mb-12 animate-fadeIn">Exploring the Power of Composition API</p>
+					<p class="text-2xl mb-12 animate-fadeIn">{{ slideContent.body }}</p>
 				</div>
 			</Transition>
 		</div>
