@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref, computed } from "vue"
-import { Company } from "@/types"
+import type { Company } from "@/types"
 
 const props = defineProps<{
 	company: Company
