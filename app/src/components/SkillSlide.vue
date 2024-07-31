@@ -6,7 +6,7 @@
 			<Transition name="fadeIn">
 				<div v-show="isVisible">
 					<h1 class="text-6xl font-bold mb-6 animate-fadeIn">Slide {{ slideKey }}</h1>
-					<p class="text-2xl mb-12 animate-fadeIn animation-delay-300">Exploring the Power of Composition API</p>
+					<p class="text-2xl mb-12 animate-fadeIn">Exploring the Power of Composition API</p>
 				</div>
 			</Transition>
 		</div>
@@ -62,7 +62,7 @@ onMounted(() => {
 @keyframes fadeIn {
 	from {
 		opacity: 0;
-		transform: translateY(20px);
+		transform: translateY(100px);
 	}
 	to {
 		opacity: 1;
@@ -72,13 +72,5 @@ onMounted(() => {
 
 .animate-fadeIn {
 	animation: fadeIn 0.8s ease-out forwards;
-}
-
-.animation-delay-300 {
-	animation-delay: 300ms;
-}
-
-.animation-delay-600 {
-	animation-delay: 600ms;
 }
 </style>
