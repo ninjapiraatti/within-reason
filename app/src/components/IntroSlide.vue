@@ -52,12 +52,8 @@ const props = defineProps<{
 }>()
 
 const backgroundColor = computed(() => {
-	const color = props.company?.attributes?.companydata?.color
-	console.log(props.company?.attributes?.companydata?.color)
-	if (color) {
-		return `background-image: linear-gradient(to bottom right, ${color}, yellow);`
-	}
-	return `background-image: linear-gradient(to bottom right, indigo, red);`
+	const color = props.company?.attributes?.companydata?.color ?? "#000"
+	return `background-image: linear-gradient(to bottom right, ${color}, yellow);`
 })
 </script>
 
