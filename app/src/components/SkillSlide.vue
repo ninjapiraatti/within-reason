@@ -5,6 +5,7 @@
 		<div ref="slideRef">
 			<Transition name="fadeIn">
 				<div v-show="isVisible">
+					<img class="w-full" :src="images[0]" />
 					<h1 class="text-6xl font-bold mb-6 animate-fadeIn">
 						{{ slideContent.title }}
 					</h1>
@@ -32,6 +33,13 @@ const slideContent = computed(() => {
 		return props.company.attributes.companydata.slides[props.slideKey - 1] || "Default Slide Content" // Provide a fallback
 	}
 	return "Default Slide Content" // Provide a fallback if slides are not available
+})
+
+const images = computed(() => {
+	if (props.company?.attributes?.images?.data) {
+		return props.company.attributes.images?.data.map((image) => `http://localhost:1337${image.attributes.url}`)
+	}
+	return []
 })
 
 onMounted(() => {

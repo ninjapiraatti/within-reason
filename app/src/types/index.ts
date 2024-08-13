@@ -55,6 +55,7 @@ export interface ArticleAttributes {
 export interface CompanyAttributes {
 	title: string
 	companydata: Record<string, any[]>
+	images: Record<string, any[]>
 }
 
 export type Article = StrapiResponse<ArticleAttributes>
